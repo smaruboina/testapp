@@ -5,7 +5,7 @@
 	 , total = element.length
 	 , i = 0
 	 
-	 	 /*bind addEventListener method for all code tag elements*/
+/*bind addEventListener method for all code tag elements*/
 
 	 for(i;i<total;i++){
 	   j = i;
@@ -18,6 +18,7 @@
 	 }
 
 /*Active tags based on the class value*/
+      
 	 function activeTags(attr){
 	  var classElements = document.getElementsByClassName(attr)
 		  , total = classElements.length;
