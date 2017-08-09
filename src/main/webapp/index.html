@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
 <body>
-<code class="div">&ltdiv&gt</code><code>Welcome to the Test</code><code class="ediv">&lt/div&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code>Selected element1 </code><code class="ediv">&lt/div&gt</code><br/>
-<code class="p">&ltp&gt</code><code>Element1 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="p">&ltp&gt</code><code> Element2 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code> Select element2 </code><code class="ediv">&lt/div&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code> Select element3 </code><code class="ediv">&lt/div&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<br/>
-<br/>
-<code class="p">&ltp&gt</code><code> Element3 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="p">&ltp&gt</code><code> Element4 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code> Select element4</code><code class="ediv">&lt/div&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code>Select element5 </code><code class="ediv">&lt/div&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code>Select element6  </code><code class="epre">&lt/pre&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="p">&ltp&gt</code><code> Element5 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="p">&ltp&gt</code><code> Element6 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<br/>
-<br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="p">&ltp&gt</code><code> Element7 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="p">&ltp&gt</code><code>Element8 highlighted</code><code class="ep">&lt/p&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code> Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="pre">&ltpre&gt</code><code>Select pre tag</code><code class="epre">&lt/pre&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code> Select element7</code><code class="ediv">&lt/div&gt</code><br/>
-<code class="div">&ltdiv&gt</code><code> Select element8 </code><code class="ediv">&lt/div&gt</code><br/>
+<div><h2>Find and highlight text in document</h2>
+<form action="" method="" id="search" name="search">
+<input name="query" id="query" type="text" size="30" maxlength="30">
+<input name="searchit" type="button" value="Search" onClick="getData()">
+</form>
+    </div>
+    <script>
+     
+         function getData() {
+    var xmlhttp = new XMLHttpRequest();
 
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+           if (xmlhttp.status == 200) {
+               document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+           }
+           else if (xmlhttp.status == 400) {
+              alert('There was an error 400');
+           }
+           else {
+               alert('something else other than 200 was returned');
+           }
+        }
+    };
 
+    xmlhttp.open("GET", "https://www.google.com/", true);
+    xmlhttp.send();
+}
+    
+    </script>
 </body>
-
-<script src="test.js"></script>
-
 </html>
-
