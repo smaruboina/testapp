@@ -1,43 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-    
-<div><h2>Find and highlight text in document</h2>
-<form action="" method="" id="search" name="search">
-<input name="query" id="query" type="text" size="30" maxlength="30">
-<input name="searchit" type="button" value="Search" onclick="getData()">
-</form>
-    
-    <div id="responseData">
+
+    <div>
+        <h2>Enter the URL</h2>
+        <form action="" method="" id="search" name="search">
+            <input name="query" id="query" type="text" size="30">
+            <input name="searchit" type="button" value="Search" onclick="getData()">
+        </form>
+        <br/>
+        <div id="responseData"></div>
     </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-     
 
-        function getData(){
-                var url =document.getElementById("query").value;
+    <script src="jquery.min.js"></script>
+    <script src="test1.js"></script>
 
-// use ajaxPrefilter + heroku cors-anywhere
-$.ajaxPrefilter(function(options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-});
-
-$.ajax({
-    url: url,
-    dataType: 'html',
-    type: 'POST',
-    success: function (response, status) {
-        console.log('AJAX success: ' + response);
-        $('#responseData').text(response);
-    },
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-        console.log('AJAX error:' + textStatus);
-    }
-});
-        }
-    </script>
 </body>
+
 </html>

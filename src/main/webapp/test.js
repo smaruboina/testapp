@@ -1,44 +1,25 @@
-  window.onload = init;
+function getData() {
 
-  function init(){
-	var element = document.getElementsByTagName("code")
-	 , total = element.length
-	 , i = 0
-	 
-/*bind addEventListener method for all code tag elements*/
+    var url = document.getElementById("query").value;
 
-	 for(i;i<total;i++){
-	   j = i;
-	   element[i].addEventListener("click",function(){
-			var attr = this.getAttribute("class");
-			deactiveTags();
-			activeTags(attr);
-			
-	   },false);
-	 }
+    // use ajaxPrefilter and heroku cors-anywhere
 
-/*Active tags based on the class value*/
-      
-	 function activeTags(attr){
-	  var classElements = document.getElementsByClassName(attr)
-		  , total = classElements.length;
-		  
-		for(j=0;j<total;j++){
-			classElements[j].style.backgroundColor="yellow";
-			classElements[j].style.color="red";
-		}
-	 }
-	 
-/*deselect the all items except correspand items*/
+    $.ajaxPrefilter(function(options) {
+        if (options.crossDomain && jQuery.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
 
-	 function deactiveTags(){
-	  var classElements = document.getElementsByTagName("code")
-		  , total = classElements.length;
-		  
-		for(j=0;j<total;j++){
-		    classElements[j].style.backgroundColor="";
-		    classElements[j].style.color="";
-		}
-	 }
-  }
-
+    $.ajax({
+        url: url,
+        dataType: 'html',
+        type: 'POST',
+        success: function(response, status) {
+            console.log('AJAX success: ' + response);
+            $('#responseData').text(response);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log('AJAX error:' + textStatus);
+        }
+    });
+}
