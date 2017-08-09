@@ -32,6 +32,8 @@
     };
 
     xmlhttp.open("GET", "https://www.google.com/", true);
+                          xmlhttp.setRequestHeader('Access-Control-Allow-Origin','*');
+
     xmlhttp.send();
 }
     
